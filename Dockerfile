@@ -11,4 +11,9 @@ RUN wget mozilla.debian.net/pkg-mozilla-archive-keyring_1.1_all.deb && \
 
 RUN wget -O /opt/selenium-server-standalone.jar http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar
 
-CMD xvfb-run java -jar /opt/selenium-server-standalone.jar
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_"1.2.0"_amd64.deb && dpkg -i dumb-init_*.deb && rm dumb-init_"1.2.0"_amd64.deb
+
+COPY cmd.sh /root/cmd.sh
+RUN chmod +x /root/cmd.sh
+
+CMD ["dumb-init", "-c", "--", "/root/cmd.sh"]
