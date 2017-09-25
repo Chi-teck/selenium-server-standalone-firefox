@@ -1,4 +1,4 @@
-# Standalone Selenium server with Firefox
+# Standalone Selenium 2 server with Firefox
 
 ## Usage
 
